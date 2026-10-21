@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/img/team-2025.webp">
-  <link rel="stylesheet" href="styles.css?v=8d8adcb3">
+  <link rel="stylesheet" href="styles.css?v=635eccc4">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -33,6 +33,7 @@
         </button>
         <ul id="nav-list" class="nav-list" data-nav-list>
           <li><a href="#camps">Camps</a></li>
+          <li><a href="#private">Private</a></li>
           <li><a href="#training">Training</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#testimonials">Testimonials</a></li>
@@ -193,6 +194,45 @@
         </div>
         <p class="empty" data-empty hidden>No upcoming camps in this category. <button class="link" data-filter="all">Show all camps</button></p>
         <p class="more">Spring and summer 2027 camps are added to <a href="https://campscui.active.com/orgs/PellsKeeperSchool?orglink=camps-registration#/selectSessions/3852035" target="_blank" rel="noopener">ACTIVE registration<span class="sr-only"> (opens ACTIVE in a new tab)</span></a> as they open.</p>
+      </div>
+    </section>
+
+    <!-- PRIVATE TRAINING (schedule lives in private-sessions.js) -->
+    <section class="section section-mist" id="private" aria-labelledby="private-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Private training</p>
+          <h2 id="private-title">This week’s sessions</h2>
+          <p class="section-sub">Small-group sessions with Laurie and staff, grouped by age and skill. The schedule changes every week and spots go fast. First come, first served.</p>
+        </div>
+
+        <div class="pt-bar">
+          <div class="filters" role="group" aria-label="Filter sessions by level">
+            <button class="chip is-active" aria-pressed="true" data-level="all">All levels</button>
+            <button class="chip" aria-pressed="false" data-level="elementary">Elementary</button>
+            <button class="chip" aria-pressed="false" data-level="middle">Middle school</button>
+            <button class="chip" aria-pressed="false" data-level="high">High school</button>
+          </div>
+          <p class="pt-week" data-pt-week>This week</p>
+        </div>
+
+        <ul class="pt-legend" aria-label="Status key">
+          <li><span class="pill pill-open">Open</span>Spots available</li>
+          <li><span class="pill pill-few">2 spots</span>Almost full</li>
+          <li><span class="pill pill-booked">Booked</span>Full</li>
+        </ul>
+
+        <div class="pt-grid" data-pt-grid aria-live="polite">
+          <noscript><p>Turn on JavaScript to see this week’s sessions, or email info@pellskeeperschool.com.</p></noscript>
+        </div>
+
+        <div class="pt-note">
+          <img src="assets/img/coach-laurie.webp" alt="" width="370" height="278" loading="lazy">
+          <div>
+            <p>“Come to camp if nothing works for you. It’s the best way to get 3 hours of training in! I work every day so I can offer as much as I can. I’m so thankful for all of you. I love my job and love working with your kids.”</p>
+            <p class="pt-note-by">Laurie <a href="#camps">See upcoming camps</a></p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -383,7 +423,7 @@
           </details>
           <details>
             <summary>Do you offer private training?</summary>
-            <p>Yes. For private and small-group sessions, email <a href="mailto:info@pellskeeperschool.com?subject=Private%20goalkeeper%20training">info@pellskeeperschool.com</a> with your keeper’s age and level, and we’ll reply with availability and pricing. You can also message us on <a href="https://www.instagram.com/pellsgkschool/" target="_blank" rel="noopener">Instagram<span class="sr-only"> (opens in a new tab)</span></a>.</p>
+            <p>Yes. See <a href="#private">this week’s private sessions</a>. To book, or for something not listed, email <a href="mailto:info@pellskeeperschool.com?subject=Private%20goalkeeper%20training">info@pellskeeperschool.com</a> with your keeper’s age and level, and we’ll reply with availability and pricing. You can also message us on <a href="https://www.instagram.com/pellsgkschool/" target="_blank" rel="noopener">Instagram<span class="sr-only"> (opens in a new tab)</span></a>.</p>
           </details>
           <details>
             <summary>What should my keeper bring?</summary>
@@ -422,7 +462,7 @@
   <footer class="footer">
     <div class="wrap footer-inner">
       <a class="brand brand-light" href="#top"><img src="assets/img/logo.png" alt="" width="32" height="48"><span class="brand-text"><strong>Pells</strong> Keeper School</span></a>
-      <nav aria-label="Footer"><ul class="footer-nav"><li><a href="#camps">Camps</a></li><li><a href="#training">Training</a></li><li><a href="#about">About</a></li><li><a href="#testimonials">Testimonials</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li></ul></nav>
+      <nav aria-label="Footer"><ul class="footer-nav"><li><a href="#camps">Camps</a></li><li><a href="#private">Private training</a></li><li><a href="#training">Training</a></li><li><a href="#about">About</a></li><li><a href="#testimonials">Testimonials</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li></ul></nav>
       <ul class="social">
         <li><a href="https://www.instagram.com/pellsgkschool/" target="_blank" rel="noopener" aria-label="Instagram: @pellsgkschool (opens in a new tab)"><svg width="24" height="24" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a></li>
         <li><a href="https://www.facebook.com/people/Pells-Keeper-School/100063484355311/" target="_blank" rel="noopener" aria-label="Facebook: Pells Keeper School (opens in a new tab)"><svg width="24" height="24" aria-hidden="true" viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v8h4v-8h3l1-4h-4V8z"/></svg></a></li>
@@ -431,6 +471,7 @@
     </div>
   </footer>
 
-  <script src="main.js?v=8d8adcb3" defer></script>
+  <script src="private-sessions.js?v=1"></script>
+  <script src="main.js?v=635eccc4" defer></script>
 </body>
 </html>

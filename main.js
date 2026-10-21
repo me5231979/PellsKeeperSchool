@@ -21,6 +21,71 @@
     if (e.key === 'Escape' && list.classList.contains('is-open')) { setNav(false); toggle.focus(); }
   });
 
+  // Private training schedule (data in private-sessions.js)
+  const pt = window.PRIVATE_SESSIONS;
+  const ptGrid = $('[data-pt-grid]');
+  if (pt && ptGrid) {
+    const LEVELS = { elementary: 'Elementary', middle: 'Middle school', high: 'High school', all: 'All levels' };
+    const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    const statusOf = (s) => {
+      if (s.booked) return { cls: 'pill-booked', text: 'Booked' };
+      if (s.spots === 1) return { cls: 'pill-few', text: '1 spot left' };
+      if (s.spots) return { cls: s.spots <= 2 ? 'pill-few' : 'pill-open', text: `${s.spots} spots left` };
+      return { cls: 'pill-open', text: 'Open' };
+    };
+    const mailto = (d, s, waitlist) => {
+      const what = `${d.day} ${s.time} – ${s.label || LEVELS[s.level]}`;
+      const subject = `${waitlist ? 'Waitlist' : 'Private session request'}: ${what}`;
+      const body = `Hi Laurie,\n\nI'd like to ${waitlist ? 'join the waitlist for' : 'book'} ${what}${pt.weekOf ? ` (week of ${pt.weekOf})` : ''}.\n\nKeeper's name:\nAge / grade:\nTeam & level:\nParent phone:\n\nThanks!`;
+      return `mailto:${pt.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    };
+    const row = (d, s) => {
+      const st = statusOf(s);
+      const name = s.label || LEVELS[s.level];
+      const meta = [s.label && s.level !== 'all' ? LEVELS[s.level] : '', s.coach ? `with ${s.coach}` : '', s.price || ''].filter(Boolean).join(' · ');
+      let action;
+      if (s.booked && s.waitlist) action = `<a class="btn btn-ghost-dark btn-sm" href="${mailto(d, s, true)}">Join waitlist<span class="sr-only"> for ${esc(d.day)} ${esc(s.time)}</span></a>`;
+      else if (s.booked) action = '';
+      else action = `<a class="btn btn-dark btn-sm" href="${mailto(d, s, false)}">Request<span class="sr-only"> ${esc(d.day)} ${esc(s.time)} ${esc(name)}</span></a>`;
+      return `<li class="pt-session${s.booked ? ' is-booked' : ''}${s.about ? ' is-special' : ''}" data-level="${s.level}">
+        <p class="pt-time">${esc(s.time)}</p>
+        <div class="pt-info">
+          <p class="pt-name">${esc(name)}${s.tag ? ` <span class="tag tag-gold">${esc(s.tag)}</span>` : ''}</p>
+          ${meta ? `<p class="pt-meta">${esc(meta)}</p>` : ''}
+          <p class="pt-status"><span class="pill ${st.cls}">${st.text}</span></p>
+          ${s.about ? `<p class="pt-about">${esc(s.about)}</p>` : ''}
+        </div>
+        <div class="pt-action">${action}</div>
+      </li>`;
+    };
+    ptGrid.innerHTML = pt.days.map((d) => `
+      <article class="pt-day" data-pt-day>
+        <header>
+          <h3>${esc(d.day)}</h3>
+          <p class="pt-loc"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>${esc(d.location)}</p>
+        </header>
+        <ul class="pt-list">${d.sessions.map((s) => row(d, s)).join('')}</ul>
+        <p class="pt-empty" hidden>No sessions for this level.</p>
+        ${d.note ? `<p class="pt-daynote">${esc(d.note)}</p>` : ''}
+      </article>`).join('');
+    if (pt.weekOf) $('[data-pt-week]').textContent = `Week of ${pt.weekOf}`;
+
+    const levelChips = $$('[data-level]', $('#private .filters'));
+    const applyLevel = (lvl) => {
+      levelChips.forEach((c) => { const on = c.dataset.level === lvl; c.classList.toggle('is-active', on); c.setAttribute('aria-pressed', String(on)); });
+      $$('[data-pt-day]', ptGrid).forEach((day) => {
+        let shown = 0;
+        $$('.pt-session', day).forEach((li) => {
+          const ok = lvl === 'all' || li.dataset.level === lvl || li.dataset.level === 'all';
+          li.hidden = !ok; if (ok) shown++;
+        });
+        $('.pt-empty', day).hidden = shown > 0;
+        day.classList.toggle('is-dim', shown === 0);
+      });
+    };
+    levelChips.forEach((c) => c.addEventListener('click', () => applyLevel(c.dataset.level)));
+  }
+
   // Camp filters
   const chips = $$('.chip[data-filter]');
   const camps = $$('[data-camp-grid] .camp');
@@ -88,7 +153,7 @@
   sections.forEach((s) => spy.observe(s));
 
   // Reveal on scroll
-  const revealEls = $$('.section-head, .camp, .skills li, .coach > *, .career-head, .quote, .faq details, .contact > *');
+  const revealEls = $$('.section-head, .camp, .pt-day, .skills li, .coach > *, .career-head, .quote, .faq details, .contact > *');
   if (!reduce && 'IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
       entries.forEach((en) => {

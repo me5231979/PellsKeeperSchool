@@ -9,6 +9,21 @@ A static rebuild of pellskeeperschool.com. It's plain HTML, CSS and JS, with no 
 
 Preview by opening `index.html`, or run `python3 -m http.server`.
 
+## Updating private training each week
+
+Edit **`private-sessions.js`**. The schedule on the site is built from it, so there's no HTML to touch.
+
+1. Set `weekOf` (e.g. `"Nov 2 – 8"`).
+2. For each day, set the `location` and list the `sessions`.
+3. For each session, set the `time` and the `level` (`elementary`, `middle`, `high` or `all`). Then add whichever of these apply:
+   - `spots: 2`: shows "2 spots left"
+   - `booked: true`: shows "Booked"
+   - `waitlist: true`: with `booked`, adds a Join waitlist button
+   - `coach`, `price`, `tag`, `about`, `label`: optional extras
+4. Bump `private-sessions.js?v=` in `index.html` (any new number) so browsers fetch the new week.
+
+The Request and Join waitlist buttons open an email to `email`, with the day, time and group already filled in.
+
 ## Before launch, replace these
 
 - [ ] **Camp sessions**: cards in `index.html` match the ACTIVE listing as of Oct 2026. Add new sessions as `<article class="camp">` cards; each hides itself after its `data-end` date.
