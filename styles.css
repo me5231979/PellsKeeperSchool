@@ -65,7 +65,8 @@ figure { margin: 0; }
 .site-header.is-scrolled { border-color: var(--line); box-shadow: 0 4px 20px rgba(14,15,18,.05); }
 .header-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
-.brand img { width: 36px; height: auto; }
+.brand img { width: 38px; height: auto; filter: drop-shadow(0 1px 2px rgba(14,15,18,.18)); }
+.brand-light img { width: 32px; }
 .brand-text { font: 600 1.25rem/1 var(--font-display); text-transform: uppercase; letter-spacing: .02em; color: var(--ink); }
 .brand-text strong { color: var(--red); font-weight: 800; }
 .brand-light .brand-text { color: #fff; }
