@@ -19,7 +19,7 @@ Edit **`private-sessions.js`**. The schedule on the site is built from it, so th
    - `spots: 2`: shows "2 spots left"
    - `booked: true`: shows "Booked"
    - `waitlist: true`: with `booked`, adds a Join waitlist button
-   - `coach`, `price`, `tag`, `about`, `label`: optional extras
+   - `price`, `tag`, `about`, `label`: optional extras
 4. Bump `private-sessions.js?v=` in `index.html` (any new number) so browsers fetch the new week.
 
 The Request and Join waitlist buttons open an email to `email`, with the day, time and group already filled in.

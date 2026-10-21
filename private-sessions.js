@@ -9,7 +9,6 @@
     label:  optional — replaces the level name (e.g. "HS juniors & seniors")
     spots:  number of spots left (e.g. 2). Leave out if just "open".
     booked: true when full. Add  waitlist: true  to offer a waitlist.
-    coach:  optional — "Josh"
     price:  optional — "$30"
     tag:    optional — short badge, e.g. "Ending soon"
     about:  optional — longer description (shows under the session)
@@ -73,8 +72,8 @@ window.PRIVATE_SESSIONS = {
       day: "Saturday",
       location: "Location TBD, most likely Cedar Lane (Howard County)",
       sessions: [
-        { time: "8am", level: "elementary", spots: 4, coach: "Josh" },
-        { time: "9am", level: "middle", spots: 4, coach: "Zeke" },
+        { time: "8am", level: "elementary", spots: 4 },
+        { time: "9am", level: "middle", spots: 4 },
         { time: "10am", level: "high", label: "HS juniors & seniors" },
         { time: "11am", level: "high", booked: true, waitlist: true },
       ],
@@ -86,7 +85,7 @@ window.PRIVATE_SESSIONS = {
       sessions: [
         { time: "8am", level: "elementary" },
         { time: "9am", level: "middle" },
-        { time: "10am", level: "high", spots: 3, coach: "Emily and Zach" },
+        { time: "10am", level: "high", spots: 3 },
       ],
     },
   ],
