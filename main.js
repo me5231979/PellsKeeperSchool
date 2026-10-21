@@ -46,6 +46,33 @@
   applyFilter('all');
 
 
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Career timeline: collapse older entries behind a toggle
+  const tlBtn = $('[data-tl-toggle]');
+  if (tlBtn) {
+    const wrap = tlBtn.closest('.tl-wrap');
+    const more = $$('.tl-item.is-more', wrap);
+    const label = $('[data-tl-label]', tlBtn);
+    const closedText = label.textContent;
+    const setOpen = (open) => {
+      tlBtn.setAttribute('aria-expanded', String(open));
+      wrap.classList.toggle('is-collapsed', !open);
+      more.forEach((li) => {
+        li.classList.toggle('is-hidden', !open);
+        li.classList.toggle('is-revealed', open);
+      });
+      label.textContent = open ? 'Show less' : closedText;
+    };
+    tlBtn.hidden = false;
+    setOpen(false);
+    tlBtn.addEventListener('click', () => {
+      const open = tlBtn.getAttribute('aria-expanded') !== 'true';
+      setOpen(open);
+      if (!open) wrap.scrollIntoView({ block: 'nearest', behavior: reduce ? 'auto' : 'smooth' });
+    });
+  }
+
   // Active nav link
   const links = $$('.nav-list a[href^="#"]:not(.btn)');
   const sections = links.map((a) => $(a.getAttribute('href'))).filter(Boolean);
@@ -61,8 +88,7 @@
   sections.forEach((s) => spy.observe(s));
 
   // Reveal on scroll
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const revealEls = $$('.section-head, .camp, .skills li, .coach > *, .career > *, .quote, .faq details, .contact > *');
+  const revealEls = $$('.section-head, .camp, .skills li, .coach > *, .career-head, .quote, .faq details, .contact > *');
   if (!reduce && 'IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
       entries.forEach((en) => {
