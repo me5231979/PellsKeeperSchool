@@ -32,7 +32,7 @@ The person asking for changes is usually Laurie, who is not a developer. Keep re
 
 ## Rules
 
-- Contact email is `pellsgkschool@gmail.com`. Booking phone (call/text) is `(908) 338-7026`. Instagram is `@pellsgkschool`.
+- Contact email is `pellsgkschool@gmail.com`. Every email link pre-fills a body that asks for the parent's name and best phone number. Booking phone (call/text) is `(908) 338-7026`. Instagram is `@pellsgkschool`.
 - Keep the existing look: brand red, black, Maryland gold; Barlow Condensed headings; Inter body text. Reuse existing classes and don't add new libraries or frameworks.
 - Every `<svg>` needs `width` and `height` attributes. Every image needs `alt` text, `width` and `height`.
 - Don't invent facts (dates, prices, credentials). If something is unclear, ask Laurie.

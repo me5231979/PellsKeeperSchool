@@ -36,7 +36,7 @@
     const mailto = (d, s, waitlist) => {
       const what = `${d.day} ${s.time} – ${s.label || LEVELS[s.level]}`;
       const subject = `${waitlist ? 'Waitlist' : 'Private session request'}: ${what}`;
-      const body = `Hi Laurie,\n\nI'd like to ${waitlist ? 'join the waitlist for' : 'book'} ${what}${pt.weekOf ? ` (week of ${pt.weekOf})` : ''}.\n\nKeeper's name:\nAge / grade:\nTeam & level:\nParent phone:\n\nThanks!`;
+      const body = `Hi Laurie,\n\nI'd like to ${waitlist ? 'join the waitlist for' : 'book'} ${what}${pt.weekOf ? ` (week of ${pt.weekOf})` : ''}.\n\nParent name:\nBest phone number (call/text):\nKeeper's name:\nAge / grade:\nTeam & level:\n\nThanks!`;
       return `mailto:${pt.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     };
     const row = (d, s) => {
