@@ -149,6 +149,13 @@ figure { margin: 0; }
 .pill-booked { background: #ECEDF0; color: #5B6270; }
 .pt-disclaimer { display: flex; gap: 10px; align-items: flex-start; margin: 0 0 20px; padding: 12px 16px; border-radius: var(--radius-sm); background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--gold); font-size: .875rem; color: var(--text); }
 .pt-disclaimer svg { flex: none; margin-top: 1px; fill: none; stroke: #8A5A00; stroke-width: 2.2; stroke-linecap: round; }
+.pt-contact { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; margin: -8px 0 20px; padding: 14px 16px; border-radius: var(--radius-sm); background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--red); font-size: .9375rem; }
+.pt-contact strong { color: var(--ink); }
+.pt-contact p a { color: var(--red-ink); font-weight: 700; white-space: nowrap; }
+.pt-contact-actions { display: flex; gap: 8px; }
+.pt-contact-actions .btn { min-height: 44px; }
+.pt-contact-actions svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 600px) { .pt-contact-actions { width: 100%; } .pt-contact-actions .btn { flex: 1; } }
 .pt-grid { display: grid; gap: 12px; }
 .pt-day { display: grid; grid-template-columns: 200px 1fr; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; transition: opacity .2s; }
 .pt-day.is-dim { opacity: .5; }
