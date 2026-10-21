@@ -24,8 +24,15 @@ The person asking for changes is usually Laurie, who is not a developer. Keep re
 - Day notes go in `note`, kept short and public-facing. Leave out personal details.
 
 **Camps**: each camp is an `<article class="camp">` card in the `#camps` section of `index.html`.
-- Set `data-cat` (`half`, `full` or `boot`) and `data-end` (`YYYY-MM-DD`, the last day). Cards hide themselves after `data-end`.
-- Copy an existing card and change the date badge, title, When, Where, Ages, price and note.
+- Copy an existing card and change the date badge, title, When, Where (keep the Google Maps link), Ages, price and note.
+- Set the data attributes. They drive auto-hiding, Add to calendar and the Google event listing:
+  - `data-cat`: `half`, `full` or `boot`
+  - `data-date`: first day, `YYYY-MM-DD`
+  - `data-end`: last day. The card hides itself after this date.
+  - `data-time`: `"09:00-12:00"` (24-hour)
+  - `data-repeat` (optional): `"daily:2"` for 2 days in a row, or `"weekly:SU:2027-03-14"` for weekly until that date
+  - `data-venue`: full address, used for the calendar and map
+  - `data-price`: a number, e.g. `"155"`
 - Every Register button links to the ACTIVE registration URL already used on the page. There is no on-site sign-up.
 
 **Testimonials, FAQ, About**: edit the matching section in `index.html`. Keep quotes in the family's own words.
@@ -41,7 +48,8 @@ The person asking for changes is usually Laurie, who is not a developer. Keep re
 
 1. Run `node --check private-sessions.js && node --check main.js`. A syntax error blanks the schedule.
 2. If a browser is available, open `index.html` and check that the changed section renders with no console errors at desktop and phone widths.
-3. Commit with a short message that says what changed (e.g. "Private: Tue 5pm booked").
+3. There are no cache version tags to bump; Vercel serves fresh HTML, CSS and JS.
+4. Commit with a short message that says what changed (e.g. "Private: Tue 5pm booked").
 
 ## Going live
 

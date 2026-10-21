@@ -1,0 +1,13 @@
+{
+  "name": "Pells Keeper School",
+  "short_name": "Pells Keepers",
+  "description": "Goalkeeper-only camps and private training in Howard County, MD.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#FFFFFF",
+  "theme_color": "#0E0F12",
+  "icons": [
+    { "src": "/assets/img/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/img/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

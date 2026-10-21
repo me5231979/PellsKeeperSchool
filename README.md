@@ -20,9 +20,8 @@ Edit **`private-sessions.js`**. The schedule on the site is built from it, so th
    - `booked: true`: shows "Booked"
    - `waitlist: true`: with `booked`, adds a Join waitlist button
    - `price`, `tag`, `about`, `label`: optional extras
-4. Bump `private-sessions.js?v=` in `index.html` (any new number) so browsers fetch the new week.
 
-The Request and Join waitlist buttons open an email to `email`, with the day, time and group already filled in.
+Request and Waitlist open a short form (parent, phone, keeper). Parents then send it by text, email app or Gmail, or copy it. It goes to `phone` and `email`.
 
 ## Before launch, replace these
 
@@ -32,6 +31,9 @@ The Request and Join waitlist buttons open an email to `email`, with the day, ti
 - [x] **Social links**: Instagram and Facebook in the footer and contact section.
 - [ ] **About & testimonials**: copied from the old site. Confirm wording and the career timeline with Laurie.
 
-## Cache busting
+## Hosting and SEO
 
-`index.html` loads `styles.css?v=…` and `main.js?v=…`. After changing either file, bump the `v` value (any new string) so returning visitors get the new version.
+- Hosted on Vercel (`vercel.json` sets the security and caching headers). Browsers always re-check HTML, CSS and JS, so there are no version tags to bump.
+- The site address `https://pellskeeperschool.com/` appears in `index.html` (canonical, link-preview tags, business details), `robots.txt` and `sitemap.xml`. If the domain changes, find and replace it.
+- Upcoming camps are published to Google as events, built automatically from the camp cards.
+- Vercel Web Analytics: switch it on under Project → Analytics. The script tag is already on the page.

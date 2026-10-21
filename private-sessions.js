@@ -19,6 +19,8 @@
 window.PRIVATE_SESSIONS = {
   weekOf: "", // e.g. "Oct 26 – Nov 1". Leave "" to just say "This week".
   email: "pellsgkschool@gmail.com",
+  phone: "+19083387026",          // used by the Text Laurie button
+  phoneDisplay: "(908) 338-7026",
 
   days: [
     {
