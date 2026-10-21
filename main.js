@@ -25,6 +25,9 @@
   const chips = $$('.chip[data-filter]');
   const camps = $$('[data-camp-grid] .camp');
   const empty = $('[data-empty]');
+  // Hide sessions once their last day has passed
+  const today = new Date().toISOString().slice(0, 10);
+  const isPast = (card) => card.dataset.end && card.dataset.end < today;
   const applyFilter = (f) => {
     chips.forEach((c) => {
       const on = c.dataset.filter === f;
@@ -33,24 +36,15 @@
     });
     let shown = 0;
     camps.forEach((card) => {
-      const match = f === 'all' || card.dataset.cat.split(' ').includes(f);
+      const match = !isPast(card) && (f === 'all' || card.dataset.cat.split(' ').includes(f));
       card.hidden = !match;
       if (match) shown++;
     });
     empty.hidden = shown > 0;
   };
   $$('[data-filter]').forEach((b) => b.addEventListener('click', () => applyFilter(b.dataset.filter)));
+  applyFilter('all');
 
-  // Pre-select the camp in the contact form when a card CTA is used
-  const campSelect = $('#f-camp');
-  camps.forEach((card) => {
-    const cta = $('.btn', card);
-    const name = $('h3', card).textContent.replace(/\s*20\d\d$/, '').trim();
-    cta.addEventListener('click', () => {
-      const opt = [...campSelect.options].find((o) => o.text.startsWith(name));
-      if (opt) campSelect.value = opt.value;
-    });
-  });
 
   // Active nav link
   const links = $$('.nav-list a[href^="#"]:not(.btn)');
@@ -82,26 +76,6 @@
     });
   }
 
-  // Contact form validation (inline, on submit and on blur)
-  const form = $('[data-form]');
-  const rules = {
-    'f-name': (v) => v.trim().length > 0,
-    'f-email': (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()),
-  };
-  const check = (id) => {
-    const input = $('#' + id);
-    const ok = rules[id](input.value);
-    const err = $('#' + id + '-err');
-    input.setAttribute('aria-invalid', String(!ok));
-    if (ok) input.removeAttribute('aria-describedby'); else input.setAttribute('aria-describedby', id + '-err');
-    err.hidden = ok;
-    return ok;
-  };
-  Object.keys(rules).forEach((id) => $('#' + id).addEventListener('blur', (e) => { if (e.target.value) check(id); }));
-  form.addEventListener('submit', (e) => {
-    const bad = Object.keys(rules).filter((id) => !check(id));
-    if (bad.length) { e.preventDefault(); $('#' + bad[0]).focus(); }
-  });
 
   $('[data-year]').textContent = new Date().getFullYear();
 })();

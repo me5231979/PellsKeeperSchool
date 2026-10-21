@@ -11,8 +11,8 @@ Preview by opening `index.html`, or run `python3 -m http.server`.
 
 ## Before launch, replace these
 
-- [ ] **Camp dates, prices and status**: edit the `<article class="camp">` cards in `index.html`. Details came from public listings and may be out of date.
-- [ ] **Registration links**: card buttons point to `#contact` for now. Point them at the real registration pages (Coerver for summer).
-- [ ] **Email**: `info@pellskeeperschool.com` is assumed. Confirm it, or wire the form to a form service (Formspree, Netlify Forms, etc.) in place of `mailto:`.
+- [ ] **Camp sessions**: cards in `index.html` match the ACTIVE listing as of Oct 2026. Add new sessions as `<article class="camp">` cards; each hides itself after its `data-end` date.
+- [x] **Registration**: every CTA links to ACTIVE (`campscui.active.com/orgs/PellsKeeperSchool`). No on-site sign-up.
+- [ ] **Email**: `info@pellskeeperschool.com` is assumed. Confirm it.
 - [ ] **Social links**: add Instagram/Facebook to the footer if wanted.
 - [ ] **Coach bio**: confirm the wording and credentials with Laurie.
