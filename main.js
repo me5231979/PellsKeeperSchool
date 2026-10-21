@@ -44,14 +44,17 @@
       const name = s.label || LEVELS[s.level];
       const meta = [s.label && s.level !== 'all' ? LEVELS[s.level] : '', s.coach ? `with ${s.coach}` : '', s.price || ''].filter(Boolean).join(' · ');
       let action = '';
-      if (s.booked && s.waitlist) action = `<a class="btn btn-ghost-dark btn-sm btn-block" href="${mailto(d, s, true)}">Join waitlist<span class="sr-only"> for ${esc(d.day)} ${esc(s.time)}</span></a>`;
-      else if (!s.booked) action = `<a class="btn btn-dark btn-sm btn-block" href="${mailto(d, s, false)}">Request<span class="sr-only"> ${esc(d.day)} ${esc(s.time)} ${esc(name)}</span></a>`;
+      if (s.booked && s.waitlist) action = `<a class="btn btn-line" href="${mailto(d, s, true)}">Waitlist<span class="sr-only"> for ${esc(d.day)} ${esc(s.time)} ${esc(name)}</span></a>`;
+      else if (!s.booked) action = `<a class="btn btn-line btn-line-red" href="${mailto(d, s, false)}">Request<span class="sr-only"> ${esc(d.day)} ${esc(s.time)} ${esc(name)}</span></a>`;
       return `<li class="pt-session${s.booked ? ' is-booked' : ''}${s.about ? ' is-special' : ''}" data-level="${s.level}">
-        <div class="pt-top"><p class="pt-time">${esc(s.time)}</p><span class="pill ${st.cls}">${st.text}</span></div>
-        <p class="pt-name">${esc(name)}${s.tag ? ` <span class="tag tag-gold">${esc(s.tag)}</span>` : ''}</p>
-        ${meta ? `<p class="pt-meta">${esc(meta)}</p>` : ''}
-        ${s.about ? `<p class="pt-about">${esc(s.about)}</p>` : ''}
-        ${action ? `<div class="pt-action">${action}</div>` : ''}
+        <p class="pt-time">${esc(s.time)}</p>
+        <div class="pt-info">
+          <p class="pt-name">${esc(name)}${s.tag ? ` <span class="tag tag-gold">${esc(s.tag)}</span>` : ''}</p>
+          ${meta ? `<p class="pt-meta">${esc(meta)}</p>` : ''}
+          ${s.about ? `<p class="pt-about">${esc(s.about)}</p>` : ''}
+        </div>
+        <p class="pt-status"><span class="pill ${st.cls}">${st.text}</span></p>
+        <div class="pt-action">${action}</div>
       </li>`;
     };
     ptGrid.innerHTML = pt.days.map((d) => `
