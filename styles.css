@@ -234,6 +234,12 @@ figure { margin: 0; }
 .footer-nav a:hover { color: #fff; }
 .fine { font-size: .875rem; width: 100%; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.12); }
 
+.social { list-style: none; margin: 0; padding: 0; display: flex; gap: 8px; }
+.social a { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.2); color: #fff; transition: background-color .15s, border-color .15s; }
+.social a:hover { background: var(--red); border-color: var(--red); }
+.social svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.contact-list li a + a { margin-top: 2px; }
+
 /* ===== Reveal ===== */
 .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
 .reveal.is-in { opacity: 1; transform: none; }
