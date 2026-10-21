@@ -220,11 +220,9 @@ figure { margin: 0; }
 @media (max-width: 900px) { .quotes { grid-template-columns: 1fr; } .quote-feature { grid-template-columns: 1fr; row-gap: 18px; } .quote-feature .qmark { grid-row: auto; width: 40px; height: 30px; } }
 
 /* ===== Gallery ===== */
-.gallery { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 6px; }
-.gallery img { width: 100%; height: clamp(240px, 38vw, 520px); object-fit: cover; }
-.gallery .g-dive { object-position: 18% 40%; }
-@media (max-width: 900px) { .gallery { grid-template-columns: 1fr 1fr; } .gallery .g-wide { grid-column: 1 / -1; } }
-@media (max-width: 560px) { .gallery { grid-template-columns: 1fr; } }
+.gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.gallery img { width: 100%; height: clamp(180px, 22vw, 340px); object-fit: cover; }
+@media (max-width: 700px) { .gallery { grid-template-columns: 1fr 1fr; } .gallery img { height: 44vw; } }
 
 /* ===== FAQ ===== */
 .faq { border-top: 1px solid var(--line); }
