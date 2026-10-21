@@ -19,7 +19,7 @@
 */
 window.PRIVATE_SESSIONS = {
   weekOf: "", // e.g. "Oct 26 – Nov 1". Leave "" to just say "This week".
-  email: "info@pellskeeperschool.com",
+  email: "pellsgkschool@gmail.com",
 
   days: [
     {
