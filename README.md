@@ -15,4 +15,4 @@ Preview by opening `index.html`, or run `python3 -m http.server`.
 - [x] **Registration**: every CTA links to ACTIVE (`campscui.active.com/orgs/PellsKeeperSchool`). No on-site sign-up.
 - [ ] **Email**: `info@pellskeeperschool.com` is assumed. Confirm it.
 - [ ] **Social links**: add Instagram/Facebook to the footer if wanted.
-- [ ] **Coach bio**: confirm the wording and credentials with Laurie.
+- [ ] **About & testimonials**: copied from the old site. Confirm wording and the career timeline with Laurie.

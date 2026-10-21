@@ -62,7 +62,7 @@
 
   // Reveal on scroll
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const revealEls = $$('.section-head, .camp, .skills li, .coach > *, .faq details, .contact > *');
+  const revealEls = $$('.section-head, .camp, .skills li, .coach > *, .career > *, .quote, .faq details, .contact > *');
   if (!reduce && 'IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
       entries.forEach((en) => {
