@@ -16,3 +16,7 @@ Preview by opening `index.html`, or run `python3 -m http.server`.
 - [ ] **Email**: `info@pellskeeperschool.com` is assumed. Confirm it.
 - [x] **Social links**: Instagram and Facebook in the footer and contact section.
 - [ ] **About & testimonials**: copied from the old site. Confirm wording and the career timeline with Laurie.
+
+## Cache busting
+
+`index.html` loads `styles.css?v=…` and `main.js?v=…`. After changing either file, bump the `v` value (any new string) so returning visitors get the new version.
