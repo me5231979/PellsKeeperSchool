@@ -74,9 +74,9 @@ window.PRIVATE_SESSIONS = {
       day: "Saturday",
       location: "Location TBD, most likely Cedar Lane (Howard County)",
       sessions: [
-        { time: "8am", level: "elementary", spots: 4 },
-        { time: "9am", level: "middle", spots: 4 },
-        { time: "10am", level: "high", label: "HS juniors & seniors" },
+        { time: "8am", level: "elementary", booked: true },
+        { time: "9am", level: "middle", booked: true },
+        { time: "10am", level: "high", label: "HS juniors & seniors", booked: true },
         { time: "11am", level: "high", booked: true, waitlist: true },
       ],
     },
