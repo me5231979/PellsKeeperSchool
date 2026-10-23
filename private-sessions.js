@@ -85,7 +85,7 @@ window.PRIVATE_SESSIONS = {
       location: "Troy Hill Park or Blandair Park",
       note: "No 11am session this week.",
       sessions: [
-        { time: "8am", level: "elementary" },
+        { time: "8am", level: "elementary", spots: 2 },
         { time: "9am", level: "middle" },
         { time: "10am", level: "high", spots: 3 },
       ],
