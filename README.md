@@ -28,7 +28,7 @@ Request and Waitlist open a short form (parent, phone, keeper). Parents then sen
 - [ ] **Camp sessions**: cards in `index.html` match the ACTIVE listing as of Oct 2026. Add new sessions as `<article class="camp">` cards; each hides itself after its `data-end` date.
 - [x] **Registration**: every CTA links to ACTIVE (`campscui.active.com/orgs/PellsKeeperSchool`). No on-site sign-up.
 - [x] **Email**: pellsgkschool@gmail.com
-- [x] **Social links**: Instagram and Facebook in the footer and contact section.
+- [x] **Social links**: Instagram in the footer and contact section.
 - [ ] **About & testimonials**: copied from the old site. Confirm wording and the career timeline with Laurie.
 
 ## Hosting and SEO
