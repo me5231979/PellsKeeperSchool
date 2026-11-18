@@ -29,7 +29,8 @@ window.PRIVATE_SESSIONS = {
       location: "Troy Hill Park",
       sessions: [
         { time: "4pm", level: "high", spots: 3 },
-        { time: "5–8pm", level: "all", label: "Evening sessions", booked: true },
+        { time: "5pm", level: "all", spots: 1 },
+        { time: "6–8pm", level: "all", label: "Evening sessions", booked: true },
       ],
     },
     {
