@@ -14,7 +14,8 @@
     about:  optional — longer description (shows under the session)
 
   Day:
-    day, location, note (optional), sessions: [ ... ]
+    day, location ("" for a day off), note (optional), sessions: [ ... ]
+    A day off: sessions: [] with a note, e.g. "No sessions this Saturday."
 */
 window.PRIVATE_SESSIONS = {
   weekOf: "", // e.g. "Oct 26 – Nov 1". Leave "" to just say "This week".
@@ -27,67 +28,55 @@ window.PRIVATE_SESSIONS = {
       day: "Monday",
       location: "Troy Hill Park",
       sessions: [
-        { time: "3pm", level: "all" },
+        { time: "4pm", level: "high", spots: 3 },
+        { time: "5–8pm", level: "all", label: "Evening sessions", booked: true },
       ],
     },
     {
       day: "Tuesday",
       location: "Troy Hill Park",
       sessions: [
-        { time: "4pm", level: "high" },
-        { time: "5pm", level: "elementary", spots: 1 },
+        { time: "4pm", level: "high", spots: 3 },
+        { time: "6:15pm", level: "all", label: "5th–6th grade", spots: 2, about: "This session is at Covenant Park." },
       ],
     },
     {
       day: "Wednesday",
       location: "Troy Hill Park",
       sessions: [
-        { time: "4pm", level: "middle", booked: true },
-        { time: "5pm", level: "middle", spots: 2 },
+        { time: "4pm", level: "middle", spots: 1 },
+        { time: "5pm", level: "middle", spots: 1 },
       ],
     },
     {
       day: "Thursday",
       location: "Troy Hill Park",
       sessions: [
-        { time: "4pm", level: "all" },
-        { time: "5pm", level: "elementary" },
+        { time: "4pm", level: "high", spots: 3 },
+        { time: "5pm", level: "elementary", tag: "Lights permitting" },
       ],
     },
     {
       day: "Friday",
       location: "Troy Hill Park",
+      note: "No afternoon sessions this Friday.",
       sessions: [
-        { time: "4pm", level: "middle" },
-        {
-          time: "5pm",
-          level: "all",
-          label: "Distribution session",
-          price: "$30",
-          tag: "Ending soon",
-          about: "Learn and practice getting under the ball and breaking lines. Keepers take their own goal kicks, free kicks from the back, and punts, and so many struggle with it. Come one, come all.",
-        },
-        { time: "6pm", level: "high", spots: 3 },
+        { time: "10:30am", level: "middle", tag: "If school is off" },
       ],
     },
     {
       day: "Saturday",
-      location: "Location TBD, most likely Cedar Lane (Howard County)",
-      sessions: [
-        { time: "8am", level: "elementary", booked: true },
-        { time: "9am", level: "middle", booked: true },
-        { time: "10am", level: "high", label: "HS juniors & seniors", booked: true },
-        { time: "11am", level: "high", booked: true, waitlist: true },
-      ],
+      location: "",
+      note: "No sessions this Saturday.",
+      sessions: [],
     },
     {
       day: "Sunday",
       location: "Troy Hill Park or Blandair Park",
-      note: "No 11am session this week.",
+      note: "Afternoon sessions only this Sunday.",
       sessions: [
-        { time: "8am", level: "elementary", spots: 2 },
-        { time: "9am", level: "middle" },
-        { time: "10am", level: "high", spots: 3 },
+        { time: "3pm", level: "all" },
+        { time: "4pm", level: "all" },
       ],
     },
   ],
