@@ -83,7 +83,7 @@
       <article class="pt-day" data-pt-day>
         <header>
           <h3>${esc(d.day)}</h3>
-          <p class="pt-loc"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><span>${placeHTML(d.location)}</span></p>
+${d.location ? `<p class="pt-loc"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><span>${placeHTML(d.location)}</span></p>` : ''}
         </header>
         <div class="pt-body">
           <ul class="pt-list">${d.sessions.map((s, si) => row(d, di, s, si)).join('')}</ul>
@@ -103,8 +103,9 @@
           const ok = lvl === 'all' || li.dataset.level === lvl || li.dataset.level === 'all';
           li.hidden = !ok; if (ok) shown++;
         });
-        $('.pt-empty', day).hidden = shown > 0;
-        day.classList.toggle('is-dim', shown === 0);
+        const none = !$('.pt-session', day); // a day off: its note says so
+        $('.pt-empty', day).hidden = none || shown > 0;
+        day.classList.toggle('is-dim', !none && shown === 0);
       });
     };
     levelChips.forEach((c) => c.addEventListener('click', () => applyLevel(c.dataset.level)));
